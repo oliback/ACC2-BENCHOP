@@ -32,14 +32,23 @@ format long
 
 warning off
 
+full_test = 0
+
 Methods={'MC','MC-S','QMC-S','MLMC','MLMC-A',...
     'FFT','FGL','COS',...
     'FD','FD-NU','FD-AD',...
     'RBF','RBF-FD','RBF-PUM','RBF-LSML','RBF-AD','RBF-MLT'};
 
+if full_test
+    disp("running all tests")
+else
+    disp("runninq the quick tests")
+end
+
 %% Problem 1 a) I
 
 display('Problem 1 a) I');
+%If there are problems, make sure that pwd is actually the current BENCHOP root.
 rootpath=pwd;
 S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
 U=[2.758443856146076 7.485087593912603 14.702019669720769];
@@ -49,8 +58,8 @@ par={S,K,T,r,sig};
 [timeBSeuCallUI,relerrBSeuCallUI] = executor(rootpath,filepathsBSeuCallUI,U,par)
 
 tBSeuCallUI=NaN(numel(Methods),1); rBSeuCallUI=tBSeuCallUI;
-testasdf = numel(Methods);
-for ii=1:testasdf
+
+for ii=1:numel(Methods)
     for jj=1:numel(filepathsBSeuCallUI)
         a=filepathsBSeuCallUI{jj}(3:3+numel(Methods{ii}));
         if ispc
@@ -127,114 +136,144 @@ cd(rootpath);
 
 %% Problem 1 a) II
 
-display('Problem 1 a) II');
-rootpath=pwd;
-S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100;
-U=[0.033913177006141   0.512978189232598   1.469203342553328];
+if full_test
+    display('Problem 1 a) II');
+    rootpath=pwd;
+    S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100;
+    U=[0.033913177006141   0.512978189232598   1.469203342553328];
 
-filepathsBSeuCallUII=getfilenames('./','BSeuCallUII_*.m');
-par={S,K,T,r,sig};
-[timeBSeuCallUII,relerrBSeuCallUII] = executor(rootpath,filepathsBSeuCallUII,U,par)
-
-tBSeuCallUII=NaN(numel(Methods),1); rBSeuCallUII=NaN(numel(Methods),1);
-for ii=1:numel(Methods)
-    for jj=1:numel(filepathsBSeuCallUII)
-        a=filepathsBSeuCallUII{jj}(3:3+numel(Methods{ii}));
-        if ispc
-            b=[Methods{ii},'\'];
-        else
-            b=[Methods{ii},'/'];
-        end
-        if strcmp(a,b)
-            tBSeuCallUII(ii)=timeBSeuCallUII(jj);
-            rBSeuCallUII(ii)=relerrBSeuCallUII(jj);
+    filepathsBSeuCallUII=getfilenames('./','BSeuCallUII_*.m');
+    par={S,K,T,r,sig};
+    
+    [timeBSeuCallUII,relerrBSeuCallUII] = executor(rootpath,filepathsBSeuCallUII,U,par)
+    
+    tBSeuCallUII=NaN(numel(Methods),1); rBSeuCallUII=NaN(numel(Methods),1);
+    for ii=1:numel(Methods)
+        for jj=1:numel(filepathsBSeuCallUII)
+            a=filepathsBSeuCallUII{jj}(3:3+numel(Methods{ii}));
+            if ispc
+                b=[Methods{ii},'\'];
+            else
+                b=[Methods{ii},'/'];
+            end
+            if strcmp(a,b)
+                tBSeuCallUII(ii)=timeBSeuCallUII(jj);
+                rBSeuCallUII(ii)=relerrBSeuCallUII(jj);
+            end
         end
     end
+else
+    timeBSeuCallUII = NaN(3,1,'double')
+    relerrBSeuCallUII = NaN(3,1,'double')
+    
+    tBSeuCallUII=NaN(numel(Methods),1); rBSeuCallUII=NaN(numel(Methods),1);
 end
 
 cd(rootpath);
 
 %% Problem 1 b) II
 
-display('Problem 1 b) II');
-rootpath=pwd;
-S=[97,98,99]; K=100; T=0.25; r=0.1; sig=0.01;
-U=[3.000000000000682 2.000000000010786   1.000000000010715];
+if full_test
+    display('Problem 1 b) II');
+    rootpath=pwd;
+    S=[97,98,99]; K=100; T=0.25; r=0.1; sig=0.01;
+    U=[3.000000000000682 2.000000000010786   1.000000000010715];
 
-filepathsBSamPutUII=getfilenames('./','BSamPutUII_*.m');
-par={S,K,T,r,sig};
-[timeBSamPutUII,relerrBSamPutUII] = executor(rootpath,filepathsBSamPutUII,U,par)
+    filepathsBSamPutUII=getfilenames('./','BSamPutUII_*.m');
+    par={S,K,T,r,sig};
+    [timeBSamPutUII,relerrBSamPutUII] = executor(rootpath,filepathsBSamPutUII,U,par)
 
-tBSamPutUII=NaN(numel(Methods),1); rBSamPutUII=NaN(numel(Methods),1);
-for ii=1:numel(Methods)
-    for jj=1:numel(filepathsBSamPutUII)
-        a=filepathsBSamPutUII{jj}(3:3+numel(Methods{ii}));
-        if ispc
-            b=[Methods{ii},'\'];
-        else
-            b=[Methods{ii},'/'];
-        end
-        if strcmp(a,b)
-            tBSamPutUII(ii)=timeBSamPutUII(jj);
-            rBSamPutUII(ii)=relerrBSamPutUII(jj);
+    tBSamPutUII=NaN(numel(Methods),1); rBSamPutUII=NaN(numel(Methods),1);
+    for ii=1:numel(Methods)
+        for jj=1:numel(filepathsBSamPutUII)
+            a=filepathsBSamPutUII{jj}(3:3+numel(Methods{ii}));
+            if ispc
+                b=[Methods{ii},'\'];
+            else
+                b=[Methods{ii},'/'];
+            end
+            if strcmp(a,b)
+                tBSamPutUII(ii)=timeBSamPutUII(jj);
+                rBSamPutUII(ii)=relerrBSamPutUII(jj);
+            end
         end
     end
+else
+    timeBSamPutUII = NaN(3,1,'double')
+    relerrBSamPutUII = NaN(3,1,'double')
+
+    tBSamPutUII=NaN(numel(Methods),1); rBSamPutUII=NaN(numel(Methods),1);
 end
 
 cd(rootpath);
 
 %% Problem 1 c) II
 
-display('Problem 1 c) II');
-rootpath=pwd;
-S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100; B=1.25*K;
-U=[0.033913177006134   0.512978189232598   1.469203342553328];
+if full_test
+    display('Problem 1 c) II');
+    rootpath=pwd;
+    S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100; B=1.25*K;
+    U=[0.033913177006134   0.512978189232598   1.469203342553328];
 
-filepathsBSupoutCallII=getfilenames('./','BSupoutCallII_*.m');
-par={S,K,T,r,sig,B};
-[timeBSupoutCallII,relerrBSupoutCallII] = executor(rootpath,filepathsBSupoutCallII,U,par)
+    filepathsBSupoutCallII=getfilenames('./','BSupoutCallII_*.m');
+    par={S,K,T,r,sig,B};
+    [timeBSupoutCallII,relerrBSupoutCallII] = executor(rootpath,filepathsBSupoutCallII,U,par)
 
-tBSupoutCallII=NaN(numel(Methods),1); rBSupoutCallII=NaN(numel(Methods),1);
-for ii=1:numel(Methods)
-    for jj=1:numel(filepathsBSupoutCallII)
-        a=filepathsBSupoutCallII{jj}(3:3+numel(Methods{ii}));
-        if ispc
-            b=[Methods{ii},'\'];
-        else
-            b=[Methods{ii},'/'];
-        end
-        if strcmp(a,b)
-            tBSupoutCallII(ii)=timeBSupoutCallII(jj);
-            rBSupoutCallII(ii)=relerrBSupoutCallII(jj);
+    tBSupoutCallII=NaN(numel(Methods),1); rBSupoutCallII=NaN(numel(Methods),1);
+    for ii=1:numel(Methods)
+        for jj=1:numel(filepathsBSupoutCallII)
+            a=filepathsBSupoutCallII{jj}(3:3+numel(Methods{ii}));
+            if ispc
+                b=[Methods{ii},'\'];
+            else
+                b=[Methods{ii},'/'];
+            end
+            if strcmp(a,b)
+                tBSupoutCallII(ii)=timeBSupoutCallII(jj);
+                rBSupoutCallII(ii)=relerrBSupoutCallII(jj);
+            end
         end
     end
+else
+    timeBSupoutCallII = NaN(3,1,'double')
+    relerrBSupoutCallII = NaN(3,1,'double')
+
+    tBSupoutCallII=NaN(numel(Methods),1); rBSupoutCallII=NaN(numel(Methods),1);
 end
 
 cd(rootpath);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Table2=table(tBSeuCallUI,tBSamPutUI,tBSupoutCallI,tBSeuCallUII,tBSamPutUII,tBSupoutCallII,'RowNames',Methods)
-err=[rBSeuCallUI,rBSamPutUI,rBSupoutCallI,rBSeuCallUII,rBSamPutUII,rBSupoutCallII];
-err=round(log10(err));
+if ispc %windows
+    Table2=table(tBSeuCallUI,tBSamPutUI,tBSupoutCallI,tBSeuCallUII,tBSamPutUII,tBSupoutCallII,'RowNames',Methods)
+    err=[rBSeuCallUI,rBSamPutUI,rBSupoutCallI,rBSeuCallUII,rBSamPutUII,rBSupoutCallII];
+    err=round(log10(err));
 
-% Now use this table as input in our input struct:
-input.data = Table2;
-input.error = err;
+    % Now use this table as input in our input struct:
+    input.data = Table2;
+    input.error = err;
 
-% Set the row format of the data values (in this example we want to use
-% integers only):
-input.dataFormat = {'%.1e'};
+    % Set the row format of the data values (in this example we want to use
+    % integers only):
+    input.dataFormat = {'%.1e'};
 
-% Switch transposing/pivoting your table:
-input.transposeTable = 1;
+    % Switch transposing/pivoting your table:
+    input.transposeTable = 1;
 
-% Column alignment ('l'=left-justified, 'c'=centered,'r'=right-justified):
-input.tableColumnAlignment = 'c';
+    % Column alignment ('l'=left-justified, 'c'=centered,'r'=right-justified):
+    input.tableColumnAlignment = 'c';
 
-% Switch table borders on/off:
-input.tableBorders = 0;
+    % Switch table borders on/off:
+    input.tableBorders = 0;
 
-% Switch to generate a complete LaTex document or just a table:
-input.makeCompleteLatexDocument = 0;
+    % Switch to generate a complete LaTex document or just a table:
+    input.makeCompleteLatexDocument = 0;
 
-latex = latexTable(input);
+    latex = latexTable(input);
+else %linux (table not supported in Octave)
+    cols = ['tBSeuCallUI';'tBSamPutUI';'tBSupoutCallI';'tBSeuCallUII';'tBSamPutUII';'tBSupoutCallII'];
+    vals = [tBSeuCallUI;tBSamPutUI;tBSupoutCallI;tBSeuCallUII;tBSamPutUII;tBSupoutCallII];
+    err=[rBSeuCallUI,rBSamPutUI,rBSupoutCallI,rBSeuCallUII,rBSamPutUII,rBSupoutCallII];
+    err=round(log10(err));
+    save result.txt cols Methods vals err;
+end
