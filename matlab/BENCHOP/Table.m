@@ -49,10 +49,15 @@ par={S,K,T,r,sig};
 [timeBSeuCallUI,relerrBSeuCallUI] = executor(rootpath,filepathsBSeuCallUI,U,par)
 
 tBSeuCallUI=NaN(numel(Methods),1); rBSeuCallUI=tBSeuCallUI;
-for ii=1:numel(Methods)
+testasdf = numel(Methods);
+for ii=1:testasdf
     for jj=1:numel(filepathsBSeuCallUI)
         a=filepathsBSeuCallUI{jj}(3:3+numel(Methods{ii}));
-        b=[Methods{ii},'/'];
+        if ispc
+            b=[Methods{ii},'\'];
+        else
+            b=[Methods{ii},'/'];
+        end
         if strcmp(a,b)
             tBSeuCallUI(ii)=timeBSeuCallUI(jj);
             rBSeuCallUI(ii)=relerrBSeuCallUI(jj);
@@ -77,7 +82,11 @@ tBSamPutUI=NaN(numel(Methods),1); rBSamPutUI=NaN(numel(Methods),1);
 for ii=1:numel(Methods)
     for jj=1:numel(filepathsBSamPutUI)
         a=filepathsBSamPutUI{jj}(3:3+numel(Methods{ii}));
-        b=[Methods{ii},'/'];
+        if ispc
+            b=[Methods{ii},'\'];
+        else
+            b=[Methods{ii},'/'];
+        end
         if strcmp(a,b)
             tBSamPutUI(ii)=timeBSamPutUI(jj);
             rBSamPutUI(ii)=relerrBSamPutUI(jj);
@@ -102,7 +111,11 @@ tBSupoutCallI=NaN(numel(Methods),1); rBSupoutCallI=NaN(numel(Methods),1);
 for ii=1:numel(Methods)
     for jj=1:numel(filepathsBSupoutCallI)
         a=filepathsBSupoutCallI{jj}(3:3+numel(Methods{ii}));
-        b=[Methods{ii},'/'];
+        if ispc
+            b=[Methods{ii},'\'];
+        else
+            b=[Methods{ii},'/'];
+        end
         if strcmp(a,b)
             tBSupoutCallI(ii)=timeBSupoutCallI(jj);
             rBSupoutCallI(ii)=relerrBSupoutCallI(jj);
@@ -127,7 +140,11 @@ tBSeuCallUII=NaN(numel(Methods),1); rBSeuCallUII=NaN(numel(Methods),1);
 for ii=1:numel(Methods)
     for jj=1:numel(filepathsBSeuCallUII)
         a=filepathsBSeuCallUII{jj}(3:3+numel(Methods{ii}));
-        b=[Methods{ii},'/'];
+        if ispc
+            b=[Methods{ii},'\'];
+        else
+            b=[Methods{ii},'/'];
+        end
         if strcmp(a,b)
             tBSeuCallUII(ii)=timeBSeuCallUII(jj);
             rBSeuCallUII(ii)=relerrBSeuCallUII(jj);
@@ -152,7 +169,11 @@ tBSamPutUII=NaN(numel(Methods),1); rBSamPutUII=NaN(numel(Methods),1);
 for ii=1:numel(Methods)
     for jj=1:numel(filepathsBSamPutUII)
         a=filepathsBSamPutUII{jj}(3:3+numel(Methods{ii}));
-        b=[Methods{ii},'/'];
+        if ispc
+            b=[Methods{ii},'\'];
+        else
+            b=[Methods{ii},'/'];
+        end
         if strcmp(a,b)
             tBSamPutUII(ii)=timeBSamPutUII(jj);
             rBSamPutUII(ii)=relerrBSamPutUII(jj);
@@ -177,7 +198,11 @@ tBSupoutCallII=NaN(numel(Methods),1); rBSupoutCallII=NaN(numel(Methods),1);
 for ii=1:numel(Methods)
     for jj=1:numel(filepathsBSupoutCallII)
         a=filepathsBSupoutCallII{jj}(3:3+numel(Methods{ii}));
-        b=[Methods{ii},'/'];
+        if ispc
+            b=[Methods{ii},'\'];
+        else
+            b=[Methods{ii},'/'];
+        end
         if strcmp(a,b)
             tBSupoutCallII(ii)=timeBSupoutCallII(jj);
             rBSupoutCallII(ii)=relerrBSupoutCallII(jj);
