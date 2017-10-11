@@ -185,7 +185,16 @@ end % End of main function
 
 function g = Gk(z,k)
 if k>0
-    g = exp(z).*real(gammainc(z,k));
+    % newgammainc found at: https://bitbucket.org/M_Ginesi/octave/src/98bba8d1fde48dd6dc542dd4fefe52a6ec5b555b/scripts/specfun/gammainc.m?at=default&fileviewer=file-view-default
+    % was tried since Octave's gammainc(x,a) does not work with negative x.
+    % However, it was very slow and resulted in a lot higher error than
+    % matlab, so currently not implemented. // Anders Schanche
+    if isoctave
+        %g = exp(z).*real(newgammainc(z,k));
+        g = exp(z).*real(gammainc(z,k));
+    else
+        g = exp(z).*real(gammainc(z,k));
+    end
 else
     g = exp(z);
 end

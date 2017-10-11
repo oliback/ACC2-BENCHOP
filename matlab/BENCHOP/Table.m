@@ -41,18 +41,21 @@ p2c = false;
 run_all = false;
 
 % Octave supports command line arguments with argv(), windows does not.
-if ~ispc
+if isoctave
     args = argv();
     if ~isempty(args)
         % method to search for substrings found at:
         % https://se.mathworks.com/matlabcentral/answers/50624-testing-for-the-presence-of-a-substring-in-a-cell-array-of-strings
         % isempty instead of contains for Octave compatability
+        % If you want to test from Octave GUI, simply comment out any tests
+        % below and set to true above. // Anders Schanche
         p1a = any(~cellfun('isempty', strfind(args, "p1a")));
         p1b = any(~cellfun('isempty', strfind(args, "p1b")));
         p1c = any(~cellfun('isempty', strfind(args, "p1c")));
         p2a = any(~cellfun('isempty', strfind(args, "p2a")));
         p2b = any(~cellfun('isempty', strfind(args, "p2b")));
         p2c = any(~cellfun('isempty', strfind(args, "p2c")));
+        run_all = any(~cellfun('isempty', strfind(args, "all")));
     end
 end
 
@@ -282,7 +285,7 @@ else
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-if ispc %windows
+if ~isoctave
     Table2=table(tBSeuCallUI,tBSamPutUI,tBSupoutCallI,tBSeuCallUII,tBSamPutUII,tBSupoutCallII,'RowNames',Methods)
     err=[rBSeuCallUI,rBSamPutUI,rBSupoutCallI,rBSeuCallUII,rBSamPutUII,rBSupoutCallII];
     err=round(log10(err));
