@@ -17,8 +17,6 @@ users:
 #	  sudo: ['ALL=(ALL) NOPASSWD:ALL']
 #	  expiredate: 2017-10-20
 
-runcmd:
-	- touch /test.txt
 
 # groups:
 #	- kukilainen: [third]
@@ -39,11 +37,14 @@ write_files:
 
 package_upgrade: true
 
+package_update: true
+
 packages:
 	- python-pip
 	- lxc
 	- docker
-
+	- octave
+	
 # ssh_authorized_keys:
 
 # ssh_keys:
@@ -65,12 +66,13 @@ packages:
 #		option3: value3
 
 runcmd:
+	- touch /test.txt
 	- echo "quzalqort"
 	- pip install --upgrade pip
 	- pip install flask 
 	- pip install celery 
 	- pip install rabbitmq
-	- [cat, test.txt]
+	- cat test.txt
 
 # power_state:
 #	timeout: 1000
