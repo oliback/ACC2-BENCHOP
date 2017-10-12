@@ -6,29 +6,29 @@ users:
 	  shell: /bin/bash
 	  sudo: ['ALL=(ALL) NOPASSWD:ALL']
 
-	- name: second
-	  groups: sudo
-	  shell: /bin/bash
-	  sudo: ['ALL=(ALL) NOPASSWD:ALL']
-	  expiredate: 2017-10-20
+#	- name: second
+#	  groups: sudo
+#	  shell: /bin/bash
+#	  sudo: ['ALL=(ALL) NOPASSWD:ALL']
+#	  expiredate: 2017-10-20
 
-	- name: third
-	  shell: /bin/bash
-	  sudo: ['ALL=(ALL) NOPASSWD:ALL']
-	  expiredate: 2017-10-20
+#	- name: third
+#	  shell: /bin/bash
+#	  sudo: ['ALL=(ALL) NOPASSWD:ALL']
+#	  expiredate: 2017-10-20
 
 runcmd:
 	- touch /test.txt
 
-groups:
-	- kukilainen: [third]
+# groups:
+#	- kukilainen: [third]
 
-chpasswd:
-	list: |
-		first:bajskorv
-		second:kisskorv
-		third:bajsochkiss
-	expire: False
+# chpasswd:
+#	list: |
+#		first:sagbab
+#		second:qahbabab
+#		third:sarsari
+#	expire: False
 
 write_files:
 	- path: /test.txt
@@ -43,6 +43,7 @@ packages:
 	- python-pip
 	- lxc
 	- docker
+
 # ssh_authorized_keys:
 
 # ssh_keys:
