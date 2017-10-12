@@ -1,0 +1,80 @@
+#cloud-config
+
+users:
+	- name: first
+	  groups : sudo
+	  shell: /bin/bash
+	  sudo: ['ALL=(ALL) NOPASSWD:ALL']
+
+	- name: second
+	  groups: sudo
+	  shell: /bin/bash
+	  sudo: ['ALL=(ALL) NOPASSWD:ALL']
+	  expiredate: 2017-10-20
+
+	- name: third
+	  shell: /bin/bash
+	  sudo: ['ALL=(ALL) NOPASSWD:ALL']
+	  expiredate: 2017-10-20
+
+runcmd:
+	- touch /test.txt
+
+groups:
+	- kukilainen: [third]
+
+chpasswd:
+	list: |
+		first:bajskorv
+		second:kisskorv
+		third:bajsochkiss
+	expire: False
+
+write_files:
+	- path: /test.txt
+	- content: |
+		Here is a line.
+		Another line is here.
+	- owner: first:sudo
+
+package_upgrade: true
+
+packages:
+	- python-pip
+	- lxc
+	- docker
+# ssh_authorized_keys:
+
+# ssh_keys:
+
+# ca-certs:
+
+# manage-resolv-conf: true
+# resolv_conf:
+#	nameservers:
+#		- 'first_nameserver'
+#		- 'second_nameserver'
+#	searchdomains:
+#		- first.domain.com
+#		- second.domain.com
+#	domain: domain.com
+#	options:
+#		option1: value1
+#		option2: value2
+#		option3: value3
+
+runcmd:
+	- echo "quzalqort"
+	- pip install --upgrade pip
+	- pip install flask 
+	- pip install celery 
+	- pip install rabbitmq
+	- [cat, test.txt]
+
+# power_state:
+#	timeout: 1000
+#	delay: "+30"
+#	message: Rebooting in 30 minutes. Save important work.
+#	mode: reboot
+
+
