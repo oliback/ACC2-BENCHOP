@@ -1,4 +1,4 @@
-# Created by Octave 4.0.0, Thu Oct 12 14:59:06 2017 UTC <root@okar0286>
+# Created by Octave 4.0.0, Fri Oct 13 15:54:49 2017 UTC <root@okar0286>
 # name: cols
 # type: sq_string
 # elements: 6
@@ -169,8 +169,6 @@ RBF-MLT
  NaN
  NaN
  NaN
- 0.0006249745686848959
- 3.101372639338175
  NaN
  NaN
  NaN
@@ -188,6 +186,8 @@ RBF-MLT
  NaN
  NaN
  NaN
+ 0.09742204348246257
+ 20.40952936808268
  NaN
  NaN
  NaN
@@ -277,8 +277,8 @@ RBF-MLT
  NaN NaN NaN NaN NaN NaN
  NaN NaN NaN NaN NaN NaN
  NaN NaN NaN NaN NaN NaN
- -5 NaN NaN NaN NaN NaN
- -4 NaN NaN NaN NaN NaN
+ NaN -4 NaN NaN NaN NaN
+ NaN -4 NaN NaN NaN NaN
  NaN NaN NaN NaN NaN NaN
  NaN NaN NaN NaN NaN NaN
  NaN NaN NaN NaN NaN NaN
