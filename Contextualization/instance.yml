@@ -24,11 +24,13 @@ write_files:
         return data
         if _name_ == '_main_':
           app.run(host='0.0.0.0',debug=True)
-
+       
 runcmd:
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   - sudo apt-get update
   - sudo apt-get install -y docker-ce
-  - git clone https://github.com/oliback/ACC2-BENCHOP.git
-  
+  - sudo pip install --upgrade pip
+  - sudo pip install flask
+  - sudp pip install jsonify
+  - sudo git clone https://github.com/oliback/ACC2-BENCHOP.git
