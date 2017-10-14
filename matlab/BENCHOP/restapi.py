@@ -6,11 +6,10 @@ app = Flask(__name__)
 parameterList = ["octave", "Table.m"]
 
 
-
 #Run all problems with default parameters
 @app.route('/runall', methods=['GET'])
 def run_all():
-	return str(subprocess.call([octave, tableM, "all"]))
+	return str(subprocess.call(["octave", "Table.m", "all"]))
 
 
 
