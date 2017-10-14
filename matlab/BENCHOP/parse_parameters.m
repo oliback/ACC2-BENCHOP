@@ -18,25 +18,28 @@ for i=1:length(args)
     if strcmp(args(i), prob)
         % problem found, parse parameters
         for j=1:8
+            if length(args) < i+j
+                break;
+            end
             %TODO: fix the issue of looping too long, think if it passes
             %over into the next problems parameters for example.
             if any(~cellfun('isempty', strfind(args(i+j), "S1")))
-                S1 = sscanf(extractAfter(args(i+j), "S1="), '%d');
+                S1 = sscanf(substr(args{i+j}, 4), '%d');
             elseif any(~cellfun('isempty', strfind(args(i+j), "S2")))
-                S2 = sscanf(extractAfter(args(i+j), "S2="), '%d');
+                S2 = sscanf(substr(args{i+j}, 4), '%d');
             elseif any(~cellfun('isempty', strfind(args(i+j), "S3")))
-                S3 = sscanf(extractAfter(args(i+j), "S3="), '%d');
+                S3 = sscanf(substr(args{i+j}, 4), '%d');
             elseif any(~cellfun('isempty', strfind(args(i+j), "K")))
-                K = sscanf(extractAfter(args(i+j), "K="), '%d');
+                K = sscanf(substr(args{i+j}, 3), '%d');
             elseif any(~cellfun('isempty', strfind(args(i+j), "T")))
-                T = sscanf(extractAfter(args(i+j), "T="), '%d');
+                T = sscanf(substr(args{i+j}, 3), '%d');
             elseif any(~cellfun('isempty', strfind(args(i+j), "r")))
-                r = sscanf(extractAfter(args(i+j), "r="), '%d');
+                r = sscanf(substr(args{i+j}, 3), '%f');
             elseif any(~cellfun('isempty', strfind(args(i+j), "sig")))
-                sig = sscanf(extractAfter(args(i+j), "sig="), '%d');
+                sig = sscanf(substr(args{i+j}, 5), '%f');
             elseif any(~cellfun('isempty', strfind(args(i+j), "Bm")))
                 %Bm is used as a multiplier with K outside of the function.
-                Bm = sscanf(extractAfter(args(i+j), "Bm="), '%d');
+                Bm = sscanf(substr(args{i+j}, 4), '%f');
             else
                 % no more parameters found, break out of loop.
                 break;

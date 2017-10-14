@@ -70,7 +70,18 @@ if p1a || run_all
     display('Problem 1 a) I');
     %If there are problems, make sure that pwd is actually the current BENCHOP root.
     rootpath=pwd;
-    S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
+    
+    % get parameters if octave
+    if isoctave
+        [S1, S2, S3, K, T, r, sig, Bm] = parse_parameters(args, 'p1a', ...
+            90, 100, 110, 100, 1.0, 0.03, 0.15, 0.0);
+        S = [S1, S2, S3];
+    else
+        S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
+    end
+    X = sprintf('K=%d, T=%d, r=%d, sig=%d', K, T, r, sig);
+    display(X);
+    
     U=[2.758443856146076 7.485087593912603 14.702019669720769];
 
     filepathsBSeuCallUI=getfilenames('./','BSeuCallUI_*.m');
@@ -108,7 +119,16 @@ end
 if p1b || run_all
     display('Problem 1 b) I');
     rootpath=pwd;
-    S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
+    
+    % get parameters if octave
+    if isoctave
+        [S1, S2, S3, K, T, r, sig, Bm] = parse_parameters(args, 'p1b', ...
+            90, 100, 110, 100, 1.0, 0.03, 0.15, 0.0);
+        S = [S1, S2, S3];
+    else
+        S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
+    end
+    
     U=[10.726486710094511 4.820608184813253 1.828207584020458];
 
     filepathsBSamPutUI=getfilenames('./','BSamPutUI_*.m');
@@ -144,7 +164,17 @@ end
 if p1c || run_all
     display('Problem 1 c) I');
     rootpath=pwd;
-    S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15; B=1.25*K;
+    
+    % get parameters if octave
+    if isoctave
+        [S1, S2, S3, K, T, r, sig, Bm] = parse_parameters(args, 'p1c', ...
+            90, 100, 110, 100, 1.0, 0.03, 0.15, 1.25);
+        S = [S1, S2, S3];
+        B = Bm*K;
+    else
+        S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15; B=1.25*K;
+    end
+    
     U=[1.822512255945242 3.294086516281595 3.221591131246868];
 
     filepathsBSupoutCallI=getfilenames('./','BSupoutCallI_*.m');
@@ -180,7 +210,16 @@ end
 if p2a || run_all
     display('Problem 1 a) II');
     rootpath=pwd;
-    S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100;
+    
+    % get parameters if octave
+    if isoctave
+        [S1, S2, S3, K, T, r, sig, Bm] = parse_parameters(args, 'p2a', ...
+            97, 98, 99, 100, 0.25, 0.1, 0.01, 0.0);
+        S = [S1, S2, S3];
+    else
+        S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100;
+    end
+    
     U=[0.033913177006141   0.512978189232598   1.469203342553328];
 
     filepathsBSeuCallUII=getfilenames('./','BSeuCallUII_*.m');
@@ -217,7 +256,16 @@ end
 if p2b || run_all
     display('Problem 1 b) II');
     rootpath=pwd;
-    S=[97,98,99]; K=100; T=0.25; r=0.1; sig=0.01;
+    
+    % get parameters if octave
+    if isoctave
+        [S1, S2, S3, K, T, r, sig, Bm] = parse_parameters(args, 'p2b', ...
+            97, 98, 99, 100, 0.25, 0.1, 0.01, 0.0);
+        S = [S1, S2, S3];
+    else
+        S=[97,98,99]; K=100; T=0.25; r=0.1; sig=0.01;
+    end
+    
     U=[3.000000000000682 2.000000000010786   1.000000000010715];
 
     filepathsBSamPutUII=getfilenames('./','BSamPutUII_*.m');
@@ -253,7 +301,17 @@ end
 if p2c || run_all
     display('Problem 1 c) II');
     rootpath=pwd;
-    S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100; B=1.25*K;
+    
+    % get parameters if octave
+    if isoctave
+        [S1, S2, S3, K, T, r, sig, Bm] = parse_parameters(args, 'p2c', ...
+            97, 98, 99, 100, 0.25, 0.1, 0.01, 1.25);
+        S = [S1, S2, S3];
+        B = Bm*K;
+    else
+        S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100; B=1.25*K;
+    end
+    
     U=[0.033913177006134   0.512978189232598   1.469203342553328];
 
     filepathsBSupoutCallII=getfilenames('./','BSupoutCallII_*.m');
