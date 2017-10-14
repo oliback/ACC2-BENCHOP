@@ -1,8 +1,18 @@
-function [ S1, S2, S3, K, T, r, sig, Bm ] = parse_parameters( args, prob, S1d, S2d, S3d, Kd, Td, rd, sigd Bmd )
+function [ S1, S2, S3, K, T, r, sig, Bm ] = parse_parameters( args, prob, S1d, S2d, S3d, Kd, Td, rd, sigd, Bmd )
 % This function is for parsing arguments to the problems.
 % The d in input arguments means default.
+% Order of parameters in args does not matter, except that they are
+% directly after the problem they are relevant to. /Anders Schanche
 
-%TODO: set default values here
+% First, the default parameters is set, the function should require them.
+S1 = S1d;
+S2 = S2d;
+S3 = S3d;
+K = Kd;
+T = Td;
+r = rd;
+sig = sigd;
+Bm = Bmd;
 
 for i=1:length(args)
     if strcmp(args(i), prob)
@@ -25,18 +35,15 @@ for i=1:length(args)
             elseif any(~cellfun('isempty', strfind(args(i+j), "sig")))
                 sig = sscanf(extractAfter(args(i+j), "sig="), '%d');
             elseif any(~cellfun('isempty', strfind(args(i+j), "Bm")))
-                Bm = sscanf(extractAfter(args(i+j), "Bm="), '%d');  %TODO: multiplier or not?
+                %Bm is used as a multiplier with K outside of the function.
+                Bm = sscanf(extractAfter(args(i+j), "Bm="), '%d');
+            else
+                % no more parameters found, break out of loop.
+                break;
+            end
         end
     end
 end
-
-%TODO:
-% parse space separated strings until problem is found.
-% then somehow parse, find the argument names and convert numbers and
-% return them.
-% if problem is not found, just return the default parameters.
-
-% S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15; B=1.25*K;
 
 end
 
