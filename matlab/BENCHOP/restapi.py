@@ -1,4 +1,3 @@
-sk/bin/python
 from flask import Flask, request, jsonify
 import subprocess
 import json
