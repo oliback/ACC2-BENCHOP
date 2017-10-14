@@ -79,7 +79,8 @@ if p1a || run_all
     else
         S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
     end
-    X = sprintf('K=%d, T=%d, r=%d, sig=%d', K, T, r, sig);
+    X = sprintf('Running p1a with parameters: S1=%d, S2=%d, S3=%d, K=%d, T=%d, r=%f, sig=%d', ...
+        S1, S2, S3, K, T, r, sig);
     display(X);
     
     U=[2.758443856146076 7.485087593912603 14.702019669720769];
@@ -129,6 +130,10 @@ if p1b || run_all
         S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15;
     end
     
+    X = sprintf('Running p1b with parameters: S1=%d, S2=%d, S3=%d, K=%d, T=%d, r=%f, sig=%f', ...
+        S1, S2, S3, K, T, r, sig);
+    display(X);
+    
     U=[10.726486710094511 4.820608184813253 1.828207584020458];
 
     filepathsBSamPutUI=getfilenames('./','BSamPutUI_*.m');
@@ -175,6 +180,10 @@ if p1c || run_all
         S=[90,100,110]; K=100; T=1.0; r=0.03; sig=0.15; B=1.25*K;
     end
     
+    X = sprintf('Running p1c with parameters: S1=%d, S2=%d, S3=%d, K=%d, T=%d, r=%f, sig=%f, B=%f', ...
+        S1, S2, S3, K, T, r, sig, B);
+    display(X);
+    
     U=[1.822512255945242 3.294086516281595 3.221591131246868];
 
     filepathsBSupoutCallI=getfilenames('./','BSupoutCallI_*.m');
@@ -219,6 +228,10 @@ if p2a || run_all
     else
         S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100;
     end
+    
+    X = sprintf('Running p2a with parameters: S1=%d, S2=%d, S3=%d, K=%d, T=%d, r=%f, sig=%f', ...
+        S1, S2, S3, K, T, r, sig);
+    display(X);
     
     U=[0.033913177006141   0.512978189232598   1.469203342553328];
 
@@ -266,6 +279,10 @@ if p2b || run_all
         S=[97,98,99]; K=100; T=0.25; r=0.1; sig=0.01;
     end
     
+    X = sprintf('Running p2b with parameters: S1=%d, S2=%d, S3=%d, K=%d, T=%d, r=%f, sig=%f', ...
+        S1, S2, S3, K, T, r, sig);
+    display(X);
+    
     U=[3.000000000000682 2.000000000010786   1.000000000010715];
 
     filepathsBSamPutUII=getfilenames('./','BSamPutUII_*.m');
@@ -311,6 +328,10 @@ if p2c || run_all
     else
         S=[97,98,99]; sig=0.01; r=0.1; T=0.25; K=100; B=1.25*K;
     end
+    
+    X = sprintf('Running p2c with parameters: S1=%d, S2=%d, S3=%d, K=%d, T=%d, r=%f, sig=%f, B=%f', ...
+        S1, S2, S3, K, T, r, sig, B);
+    display(X);
     
     U=[0.033913177006134   0.512978189232598   1.469203342553328];
 
