@@ -16,6 +16,9 @@ def run_all():
 
 
 #Run specified problem with specified parameters
+#Example call: 
+#curl -i "http://1.2.3.4:1234/p1a?K=1&F=5"
+
 @app.route('/<problem>', methods=['GET'])
 def input(problem):
 	
