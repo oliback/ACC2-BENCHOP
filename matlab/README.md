@@ -13,7 +13,7 @@ It's also possible to use the Octave gui.
 On windows, a latex table is produced, on other systems, a simple file with the values is saved.
 
 ## command line arguments
-Possible arguments to pass to Table.m:
+Possible parameters to to Table.m:
 - p1a
 - p1b
 - p1c
@@ -26,4 +26,22 @@ Example of how the command line arguments can be passed:
 ```
 octave Table.m p1a p1b p2c	(runs three problems)
 octave Table.m all	        (runs all problems)
+```
+It is also possible to specify parameters for each problem, by stating them after the problem.
+
+Default parameter values will be used for each parameter not specified.
+
+Possible parameters:
+ - S1 (int)
+ - S2 (int)
+ - S3 (int)
+ - K (int)
+ - T (int)
+ - r (float)
+ - sig (float)
+ - Bm (float) (will be multiplied with K to create the B parameter)
+
+Example:
+```
+Octave Table.m p1a S1=80 S2=90 p2a r=0.01 sig=0.05
 ```
