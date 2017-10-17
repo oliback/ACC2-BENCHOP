@@ -395,5 +395,6 @@ else %linux (table not supported in Octave)
     vals = [tBSeuCallUI;tBSamPutUI;tBSupoutCallI;tBSeuCallUII;tBSamPutUII;tBSupoutCallII];
     err=[rBSeuCallUI,rBSamPutUI,rBSupoutCallI,rBSeuCallUII,rBSamPutUII,rBSupoutCallII];
     err=round(log10(err));
-    save result.txt cols Methods vals err;
+    %commented out for test
+    %save result.txt cols Methods vals err;
 end
