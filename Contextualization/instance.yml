@@ -34,3 +34,4 @@ runcmd:
   - sudo pip install flask
   - sudp pip install jsonify
   - sudo git clone https://github.com/oliback/ACC2-BENCHOP.git
+  - cd /ACC2-BENCHOP/matlab/BENCHOP && sudo python restapi.py
