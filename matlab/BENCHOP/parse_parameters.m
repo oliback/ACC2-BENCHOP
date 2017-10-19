@@ -32,7 +32,7 @@ for i=1:length(args)
             elseif any(~cellfun('isempty', strfind(args(i+j), "K")))
                 K = sscanf(substr(args{i+j}, 3), '%d');
             elseif any(~cellfun('isempty', strfind(args(i+j), "T")))
-                T = sscanf(substr(args{i+j}, 3), '%d');
+                T = sscanf(substr(args{i+j}, 3), '%f');
             elseif any(~cellfun('isempty', strfind(args(i+j), "r")))
                 r = sscanf(substr(args{i+j}, 3), '%f');
             elseif any(~cellfun('isempty', strfind(args(i+j), "sig")))
